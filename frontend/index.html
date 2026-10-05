@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173d35">
+  <title>ParkFlow | Smart Parking Allocation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js?v=20261005-2" defer></script>
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <main id="authView" class="auth-view" hidden>
+    <section class="auth-art" aria-label="ParkFlow parking facility">
+      <div class="art-top"><span class="brand-mark">P</span><span>ParkFlow</span></div>
+      <div class="art-caption"><span class="eyebrow">SMART PARKING, ANYWHERE</span><h1>Find a spot<br>without the stress.</h1><p>Live parking availability for malls, hotels, restaurants, and busy city destinations.</p></div>
+      <div class="art-lane"><span>LIVE</span><span class="lane-line"></span><span>OPEN</span></div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-switch"><button id="showLogin" class="text-button active" type="button">Sign in</button><button id="showRegister" class="text-button" type="button">Create account</button></div>
+      <form id="loginForm" class="auth-form">
+        <span class="eyebrow">WELCOME BACK</span><h2>Find your way in.</h2><p class="muted">Sign in with your ParkFlow account.</p>
+        <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Your password" required minlength="8"></label>
+        <button class="button button-primary wide" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+        <p class="form-note">Demo access is documented in the project README.</p>
+      </form>
+      <form id="registerForm" class="auth-form" hidden>
+        <span class="eyebrow">NEW TO PARKFLOW</span><h2>Make parking simpler.</h2><p class="muted">Create your account to reserve a convenient spot wherever you go.</p>
+        <label>Full name<input name="name" autocomplete="name" placeholder="Your name" required maxlength="100"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></label>
+        <label>Password<input name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8" maxlength="72"></label>
+        <button class="button button-primary wide" type="submit">Create account <span aria-hidden="true">↗</span></button>
+      </form>
+      <p id="authError" class="inline-message error-message" hidden></p>
+    </section>
+  </main>
+
+  <div id="appView" class="app-shell" hidden>
+    <aside class="sidebar">
+      <a class="sidebar-brand" href="#dashboard" aria-label="ParkFlow home"><span class="brand-mark">P</span><span>ParkFlow<small>SMART PARKING</small></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav id="mainNav" class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">◫</span>Overview</button>
+        <button class="nav-item" data-page="slots"><span class="nav-icon">▦</span>Parking slots</button>
+        <button class="nav-item" data-page="vehicles"><span class="nav-icon">⌑</span>My vehicles</button>
+        <button class="nav-item" data-page="bookings"><span class="nav-icon">≡</span>Requests & allocations</button>
+        <button class="nav-item" data-page="profile"><span class="nav-icon">◎</span>Profile</button>
+      </nav>
+      <nav id="adminNav" class="nav-list admin-nav" aria-label="Administration" hidden>
+        <div class="nav-label">ADMINISTRATION</div>
+        <button class="nav-item" data-page="admin-dashboard"><span class="nav-icon">▤</span>Admin overview</button>
+        <button class="nav-item" data-page="admin-slots"><span class="nav-icon">⊞</span>Manage parking</button>
+        <button class="nav-item" data-page="admin-users"><span class="nav-icon">♙</span>Users & vehicles</button>
+        <button class="nav-item" data-page="admin-requests"><span class="nav-icon">☷</span>Request review</button>
+        <button class="nav-item" data-page="admin-allocations"><span class="nav-icon">↔</span>Allocations</button>
+      </nav>
+      <div class="sidebar-footer"><span class="live-dot"></span> Parking services online</div>
+    </aside>
+    <section class="workspace">
+      <header class="topbar"><div><span class="eyebrow" id="pageEyebrow">YOUR PARKING, IN ONE PLACE</span><h1 id="pageTitle">Overview</h1></div><div class="topbar-user"><div class="user-avatar" id="userAvatar">U</div><div class="user-meta"><strong id="userName">User</strong><span id="userRole">USER</span></div><button id="logoutButton" class="icon-button" type="button" aria-label="Sign out" title="Sign out">↗</button></div></header>
+      <main id="pageContent" class="page-content" tabindex="-1"></main>
+      <footer class="page-footer"><span>PARKFLOW · SMART PARKING ALLOCATION</span><span id="footerDate"></span></footer>
+    </section>
+  </div>
+</body>
+</html>
