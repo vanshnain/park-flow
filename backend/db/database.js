@@ -1,10 +1,21 @@
+
 const mysql = require("mysql2/promise");
 
-const requiredVariables = ["DB_HOST", "DB_USER", "DB_PASSWORD", "DB_NAME"];
-const missingVariables = requiredVariables.filter((name) => !process.env[name]);
+const requiredVariables = [
+    "DB_HOST",
+    "DB_USER",
+    "DB_PASSWORD",
+    "DB_NAME"
+];
+
+const missingVariables = requiredVariables.filter(
+    (name) => !process.env[name]
+);
 
 if (missingVariables.length) {
-    throw new Error(`Missing database environment variables: ${missingVariables.join(", ")}`);
+    throw new Error(
+        `Missing database environment variables: ${missingVariables.join(", ")}`
+    );
 }
 
 const db = mysql.createPool({
@@ -13,6 +24,11 @@ const db = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+
+    ssl: {
+        minVersion: "TLSv1.2"
+    },
+
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
